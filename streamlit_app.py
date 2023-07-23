@@ -6,7 +6,7 @@ import streamlit as st
 
 st.title('Streamlit + Sqlite3')
 
-conn = st.experimental_connection(st.secrets.db_connection_string)
+conn = st.experimental_connection(st.secrets["DB_CONN"])
 
 if conn is not None:
     st.write('Connected!')
