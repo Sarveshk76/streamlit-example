@@ -7,21 +7,21 @@ import streamlit as st
 st.title('Streamlit + Sqlite3')
 
 conn = st.experimental_connection("sqlite_db", type="sql")
-
+conn = conn.cursor()
 if conn is not None:
     st.write('Connected!')
 
     st.write('Creating table...')
-    conn.query('CREATE TABLE IF NOT EXISTS data (x, y);')
+    conn.execute('CREATE TABLE IF NOT EXISTS data (x, y);')
     st.write('Done!')
     st.write('Inserting data...')
-    conn.query('INSERT INTO data VALUES (?, ?)', (1, 1))
-    conn.query('INSERT INTO data VALUES (?, ?)', (2, 4))
-    conn.query('INSERT INTO data VALUES (?, ?)', (3, 9))
+    conn.execute('INSERT INTO data VALUES (?, ?)', (1, 1))
+    conn.execute('INSERT INTO data VALUES (?, ?)', (2, 4))
+    conn.execute('INSERT INTO data VALUES (?, ?)', (3, 9))
     st.write('Done!')
 
-    st.write('Querying...')
-    data = conn.query('SELECT * FROM data').fetchall()
+    st.write('executeing...')
+    data = conn.execute('SELECT * FROM data').fetchall()
     st.write('Done!')
 
     st.write('Data:')
