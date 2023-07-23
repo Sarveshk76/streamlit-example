@@ -8,6 +8,8 @@ st.title('Streamlit + Sqlite3')
 
 conn = st.experimental_connection("sqlite_db", type="sql")
 
+conn = sqlite3.connect(conn)
+
 with conn.session as s:
     st.markdown(f"Note that `s` is a `{type(s)}`")
     s.execute(text('CREATE TABLE IF NOT EXISTS pet_owners (person TEXT, pet TEXT);'))
