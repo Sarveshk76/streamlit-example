@@ -6,9 +6,8 @@ import sqlite3
 
 st.title('Streamlit + Sqlite3')
 
-db = st.file_uploader("db.sqlite3", type="db")
-
 conn = st.experimental_connection("sqlite_db", type="sql")
+conn = conn.cursor()
 
 with conn.session as s:
     st.markdown(f"Note that `s` is a `{type(s)}`")
