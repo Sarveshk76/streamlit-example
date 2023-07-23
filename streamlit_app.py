@@ -8,10 +8,9 @@ st.title('Streamlit + Sqlite3')
 
 conn = st.experimental_connection("sqlite_db", type="sql")
 
-
 with conn.session as s:
     st.markdown(f"Note that `s` is a `{type(s)}`")
-    s.execute(text('CREATE TABLE IF NOT EXISTS pet_owners (person TEXT, pet TEXT) RETURNING id;'))
+    s.execute(text('CREATE TABLE IF NOT EXISTS pet_owners (person TEXT, pet TEXT) RETURNING person;'))
     s.execute(text('DELETE FROM pet_owners;'))
     pet_owners = {'jerry': 'fish', 'barbara': 'cat', 'alex': 'puppy'}
     for k in pet_owners:
