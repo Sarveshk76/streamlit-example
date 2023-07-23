@@ -12,7 +12,7 @@ if conn is not None:
     st.write('Connected!')
 
     st.write('Creating table...')
-    conn.query('CREATE TABLE IF NOT EXISTS data (x, y)')
+    conn.query('CREATE TABLE IF NOT EXISTS data (x, y) RETURNING id;')
     st.write('Done!')
 
     st.write('Closing connection...')
