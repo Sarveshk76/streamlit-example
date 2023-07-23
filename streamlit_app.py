@@ -14,7 +14,23 @@ if conn is not None:
     st.write('Creating table...')
     conn.query('CREATE TABLE IF NOT EXISTS data (x, y) RETURNING id;')
     st.write('Done!')
+    st.write('Inserting data...')
+    conn.query('INSERT INTO data VALUES (?, ?)', (1, 1))
+    conn.query('INSERT INTO data VALUES (?, ?)', (2, 4))
+    conn.query('INSERT INTO data VALUES (?, ?)', (3, 9))
+    st.write('Done!')
 
+    st.write('Querying...')
+    data = conn.query('SELECT * FROM data').fetchall()
+    st.write('Done!')
+
+    st.write('Data:')
+    st.write(data)
+
+    st.write('Plotting...')
+    df = pd.DataFrame(data, columns=['x', 'y'])
+    st.write(alt.Chart(df).mark_line().encode(x='x', y='y'))
+    st.write('Done!')
     st.write('Closing connection...')
     conn.close()
     st.write('Done!')
