@@ -2,13 +2,10 @@ from datetime import timedelta
 import pandas as pd
 import streamlit as st
 from sqlalchemy.sql import text
-import sqlite3
 
 st.title('Streamlit + Sqlite3')
 
 conn = st.experimental_connection("sqlite_db", type="sql")
-
-conn = sqlite3.connect(conn)
 
 with conn.session as s:
     st.markdown(f"Note that `s` is a `{type(s)}`")
