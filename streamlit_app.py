@@ -1,11 +1,12 @@
-from collections import namedtuple
-import altair as alt
 from datetime import timedelta
 import pandas as pd
 import streamlit as st
 from sqlalchemy.sql import text
+import sqlite3
 
 st.title('Streamlit + Sqlite3')
+
+db = st.file_uploader("db.sqlite3", type="db")
 
 conn = st.experimental_connection("sqlite_db", type="sql")
 
