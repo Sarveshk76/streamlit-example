@@ -2,4 +2,3 @@ altair
 pandas
 streamlit
 SQLAlchemy==1.4
-pysqlite3
