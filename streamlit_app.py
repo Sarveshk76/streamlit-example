@@ -20,17 +20,28 @@ order_table = tab1.number_input(
     'Table Number', min_value=1, max_value=10, value=1)
 order_name = tab1.text_input('Customer Name')
 
+col1, col2 = st.columns(3)
+
 # order items
 item_list = []
 quantity_list = []
-add_item = tab1.button('Add Item')
-if add_item:
-    item = tab1.selectbox('Item', ['Chicken Burger', 'Beef Burger',
-                          'Fish Burger', 'Chicken Nuggets', 'French Fries', 'Coke'])
-    quantity = tab1.number_input(
-        'Quantity', min_value=1, max_value=10, value=1)
-    item_list.append(item)
-    quantity_list.append(quantity)
+
+with col1:
+    add_item = tab1.button('Add Item')
+    if add_item:
+        item = tab1.selectbox('Item', ['Chicken Burger', 'Beef Burger',
+                            'Fish Burger', 'Chicken Nuggets', 'French Fries', 'Coke'])
+        quantity = tab1.number_input(
+            'Quantity', min_value=1, max_value=10, value=1)
+        item_list.append(item)
+        quantity_list.append(quantity)
+
+with col2:
+    # show order summary
+    order_summary = pd.DataFrame(
+        {'Item': item_list, 'Quantity': quantity_list})
+    tab1.dataframe(order_summary)
+
 
 # submit order
 submit = tab1.button('Submit')
