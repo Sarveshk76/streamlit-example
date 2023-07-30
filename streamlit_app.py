@@ -20,7 +20,7 @@ order_table = tab1.number_input(
     'Table Number', min_value=1, max_value=10, value=1)
 order_name = tab1.text_input('Customer Name')
 
-col1, col2 = st.columns(3)
+col1, col2 = st.columns(2)
 
 # order items
 item_list = []
