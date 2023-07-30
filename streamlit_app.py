@@ -25,9 +25,9 @@ col1, col2 = st.columns(2)
 # order items
 item_list = []
 quantity_list = []
+add_item = tab1.button('Add Item')
 
 with col1:
-    add_item = tab1.button('Add Item')
     if add_item:
         item = tab1.selectbox('Item', ['Chicken Burger', 'Beef Burger',
                             'Fish Burger', 'Chicken Nuggets', 'French Fries', 'Coke'])
